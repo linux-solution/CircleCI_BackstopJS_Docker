@@ -12,6 +12,7 @@ Feature: Content
 #    When I am viewing an "article" content with the title "My article"
 #    Then I should see the heading "My article"
 
+  @javascript
   Scenario: Cause a failure
     Given I am on "/"
     Then I should see the text "This text is not here."

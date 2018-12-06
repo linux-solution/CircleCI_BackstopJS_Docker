@@ -2,6 +2,10 @@
 defaults: &defaults
   docker:
     - image: quay.io/pantheon-public/build-tools-ci:1.x
+    # for screenshots
+    - image: selenium/standalone-chrome:3
+    # visual regression testing
+    - image: backstopjs/backstopjs
   working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================
@@ -19,7 +23,7 @@ defaults: &defaults
     # ADMIN_PASSWORD: The admin password to use when installing.
     # ADMIN_EMAIL:    The email address to give the admin when installing.
     #=========================================================================
-    TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    TZ: "/usr/share/zoneinfo/Asia/Tokyo"
 
     # The variables below usually do not need to be modified.
 
@@ -113,6 +117,21 @@ jobs:
             - run:
                 name: run composer install again to get dev dependencies
                 command: composer install
+
+            # - run:
+            #     name: check backstopjs version
+            #     command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version
+
+            # - run:
+            #     name: generate backstop test reference files
+            #     command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference --config=backstop-circleci.json --docker
+
+            # - run:
+            #     name: run backstopjs test
+            #     command: docker run --rm -v $(pwd):/src backstopjs/backstopjs test --config=backstop-circleci.json --docker
+
+            # - store_artifacts:
+            #     path: /app/tests/recyclables/backstop_data/ci_report
 
             - run:
                 name: run functional tests with Behat

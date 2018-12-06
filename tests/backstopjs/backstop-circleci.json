@@ -1,0 +1,115 @@
+{
+  "id": "backstop_default",
+  "viewports": [
+    {
+      "label": "phone",
+      "width": 320,
+      "height": 480
+    },
+    {
+      "label": "iPhone 5s",
+      "width": 320,
+      "height": 568
+    },
+    {
+      "label": "iPhone 6",
+      "width": 375,
+      "height": 667
+    },
+    {
+      "label": "iPhone 6 Plus",
+      "width": 414,
+      "height": 736
+    },
+    {
+      "label": "iPhone X",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "label": "iPhone XS Max",
+      "width": 414,
+      "height": 896
+    },
+    {
+      "label": "tablet + iPad sideways",
+      "width": 1024,
+      "height": 768
+    },
+    {
+      "label": "iPad Air, iPad Mini, iPad",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "label": "iPad Pro",
+      "width": 1024,
+      "height": 1366
+    },
+    {
+      "label": "iPad Pro landscape",
+      "width": 1366,
+      "height": 1024
+    },
+    {
+      "label": "desktop 1080p",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "label": "desktop 4Ka",
+      "width": 3840,
+      "height": 2160
+    },
+    {
+      "label": "desktop 4Kb",
+      "width": 4096,
+      "height": 2160
+    }
+  ],
+  "onBeforeScript": "puppet/onBefore.js",
+  "onReadyScript": "puppet/onReady.js",
+  "scenarios": [
+    {
+      "label": "Edo Top",
+      "url": "https://www.edosensei.com",
+      "referenceUrl": "http://localhost"
+    },
+    {
+      "label": "Edo Style Guide",
+      "url": "https://www.edosensei.com/ja/secrets/reference/style-guide",
+      "referenceUrl": "http://localhost/ja/secrets/reference/style-guide"
+    },
+    {
+      "label": "Edo About (basic page)",
+      "url": "https://www.edosensei.com/ja/about",
+      "referenceUrl": "http://localhost/ja/about"
+    },
+    {
+      "label": "Edo LP Getting Married (lp)",
+      "url": "https://www.edosensei.com/ja/lp/get-married/international-marriage",
+      "referenceUrl": "http://localhost/ja/lp/get-married/international-marriage"
+    },
+    {
+      "label": "Edo Contact (webform)",
+      "url": "https://www.edosensei.com/ja/wf/contact/form",
+      "referenceUrl": "http://localhost/ja/wf/contact/form"
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "../recyclables/backstop_bitmaps_reference",
+    "bitmaps_test": "../recyclables/backstop_bitmaps_test",
+    "engine_scripts": "engine_scripts",
+    "html_report": "../recyclables/backstop_html_report",
+    "ci_report": "../recyclables/backstop_ci_report"
+  },
+  "report": ["browser", "CI"],
+  "engine": "puppeteer",
+  "engineOptions": {
+    "args": ["--no-sandbox"]
+  },
+  "asyncCaptureLimit": 1,
+  "asyncCompareLimit": 1,
+  "debug": false,
+  "debugWindow": false
+}

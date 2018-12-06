@@ -100,3 +100,23 @@ Thumbs.db
 # SASS #
 ##########
 .sass-cache
+
+
+##########
+# Custom #
+##########
+/web/.env
+/web/sites/sites.php
+/web/phpinfo.php
+/web/test.php
+# vim
+*.swp
+# node
+*node_modules*
+# backstopjs
+/tests/recyclables/*
+# behat test artifacts
+/tests/behat_screenshots/*
+
+# webform dependencies
+/web/libraries

@@ -87,9 +87,9 @@ jobs:
             
             - run:
                 command: |
-                groupadd docker
-                usermod -aG docker $USER
-                systemctl restart docker
+                  groupadd docker
+                  usermod -aG docker $USER
+                  systemctl restart docker
             
             - run:
                command: docker run --help

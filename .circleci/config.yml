@@ -68,16 +68,20 @@ jobs:
                 command: id -nG
                 
             - run:
-                name: set usermod docker
-                command: usermod -aG docker root
+                name: check docker status
+                command: systemctl status docker
                 
-            - run:
-                name: swap user
-                command: su – root
+            # - run:
+            #     name: set usermod docker
+            #     command: usermod -aG docker root
                 
-            - run:
-                name: check user id
-                command: id -nG
+            # - run:
+            #     name: swap user
+            #     command: su – root
+                
+            # - run:
+            #     name: check user id
+            #     command: id -nG
 
             - save_cache:
                 key: composer-cache

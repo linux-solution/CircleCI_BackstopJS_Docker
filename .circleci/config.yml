@@ -79,14 +79,14 @@ jobs:
              #     usermod -aG docker root
             #      su – root
             #      id –nG
-            - run:
-                name: start docker
-                command: |
-                  sudo apt-get update 
-                  sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
+            #- run:
+             #   name: start docker
+            #    command: |
+            #      sudo apt-get update 
+            #      sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
                   
-            # - run:
-            #    command: docker run hello-world
+            - run:
+               command: docker run hello-world
 
             - restore_cache:
                 keys:

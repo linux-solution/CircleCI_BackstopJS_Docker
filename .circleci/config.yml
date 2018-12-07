@@ -76,30 +76,17 @@ jobs:
                 name: system info check
                 command: uname -a
                 
-            # - run:
-            #    command: apt-get remove docker docker-engine docker.io -y
-                
             - run:
-                command: apt-get update
-                
-            - run:
-                command: apt-get install apt-transport-https ca-certificates curl software-properties-common -y
-                
-            - run:
-                command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-                
-            - run:
-                command: apt-key fingerprint 0EBFCD88
-                
-            - run:
-                command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable"
-                
-            - run:
-                halt_build_on_fail: false
-                command: apt-get update
-                
-            - run:
-                command: apt-get install docker-ce -y
+               command: |
+               apt-get remove docker docker-engine
+               apt-get update
+               apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+               apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+               curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+               apt-key fingerprint 0EBFCD88
+               add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable"
+               command: apt-get update
+               apt-get install docker-ce -y
                 
             - restore_cache:
                 keys:

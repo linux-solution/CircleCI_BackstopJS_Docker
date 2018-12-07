@@ -70,6 +70,9 @@ jobs:
             - run:
                 name: set usermod docker
                 command: usermod -aG docker root
+                
+            - run:
+                name: swap user
                 command: su – root
                 
             - run:

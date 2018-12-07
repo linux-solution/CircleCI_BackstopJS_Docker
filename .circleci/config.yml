@@ -73,6 +73,10 @@ jobs:
             #     command: docker info
             
             - run:
+                name: system info check
+                command: uname -a
+            
+            - run:
                 name: install docker
                 command: |
                     dpkg -l | grep -i docker

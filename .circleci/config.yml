@@ -48,8 +48,8 @@ jobs:
         steps:
             - checkout
             
-            # - setup_remote_docker:
-            #     docker_layer_caching: true
+            - setup_remote_docker:
+                docker_layer_caching: true
                 
             # - run:
             #     name: Install Docker client
@@ -68,9 +68,9 @@ jobs:
             #     name: docker status check
             #     command: sudo systemctl status docker
                 
-            # - run:
-            #     name: check docker info
-            #     command: docker info
+            - run:
+                name: check docker info
+                command: docker --version
             
             - run:
                 name: system info check
@@ -80,25 +80,7 @@ jobs:
                   ls -l
                   id -nG
                   chmod 777 ~/example_drops_8_composer
-                
-            - run:
-               command: apt-get update
-            - run:
-               command: apt-get install apt-transport-https ca-certificates curl software-properties-common -y
-            - run:
-               command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-            - run:
-               command: apt-key fingerprint 0EBFCD88
-            - run:
-               command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable"
-            - run:
-               command: apt-get update
-            - run:
-               command: apt-cache search docker-ce
-            - run:
-               # command: sudo apt-get purge docker-ce && echo "y" | sudo apt-get install docker-ce
-               command: bash ./.circleci/scripts/pantheon/install_docker_ce
-                
+                          
             - restore_cache:
                 keys:
                     - composer-cache
@@ -168,20 +150,7 @@ jobs:
             - run:
                 name: run composer install again to get dev dependencies
                 command: composer install
-                
-            - run:
-                name: Install Docker client
-                command: |
-                  set -x
-                  VER="17.03.0-ce"
-                  curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-                  tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-                  mv /tmp/docker/* /usr/bin
-                
-            - run:
-                name: check docker info
-                command: docker info
-                
+    
             - run:
                 name: check backstopjs version
                 command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version

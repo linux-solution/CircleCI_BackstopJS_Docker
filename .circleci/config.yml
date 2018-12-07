@@ -76,8 +76,8 @@ jobs:
                 name: system info check
                 command: uname -a
             
-            - run:
-                command: dpkg -l | grep -i docker
+            #- run:
+            #    command: dpkg -l | grep -i docker
                 
             - run:
                 command: apt update

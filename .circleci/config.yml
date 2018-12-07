@@ -81,7 +81,7 @@ jobs:
             #      id –nG
             - run:
                 name: start docker
-                command: systemctl restart docker
+                command: service docker restart
                   
             - run:
                 command: docker run hello-world

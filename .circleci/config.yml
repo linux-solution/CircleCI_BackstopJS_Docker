@@ -84,7 +84,13 @@ jobs:
             #    command: |
             #      sudo apt-get update 
             #      sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
-                  
+            
+            - run:
+                command: |
+                groupadd docker
+                usermod -aG docker $USER
+                systemctl restart docker
+            
             - run:
                command: docker run --help
 

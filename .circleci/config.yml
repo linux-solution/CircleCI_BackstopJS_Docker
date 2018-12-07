@@ -95,7 +95,7 @@ jobs:
                 command: apt update -y
                 
             - run:
-                command: apt-cache policy docker-ce -y
+                command: apt-cache policy docker-ce
                 
             - run:
                 command: apt install docker-ce -y

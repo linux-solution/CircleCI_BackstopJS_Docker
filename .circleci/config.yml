@@ -81,7 +81,9 @@ jobs:
             #      id –nG
             - run:
                 name: start docker
-                command: sudo apt-get update sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+                command: |
+                  sudo apt-get update 
+                  sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
                   
             # - run:
             #    command: docker run hello-world

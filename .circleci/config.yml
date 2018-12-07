@@ -99,9 +99,6 @@ jobs:
                command: apt-get install dbus-x11 -y
 
             - run:
-               command: service docker status
-               
-            - run:
                command: docker run hello-world
 
             - restore_cache:

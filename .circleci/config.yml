@@ -95,6 +95,10 @@ jobs:
             - run:
                command: docker run --help
                
+           - run:
+               name: docker restart
+               command: /bin/systemctl reload docker.service
+               
             - run:
                command: docker run hello-world
 

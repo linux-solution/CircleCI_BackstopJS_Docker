@@ -95,7 +95,7 @@ jobs:
             - run:
                command: apt-cache search docker-ce
             - run:
-               command: apt-get install docker-ce
+               command: echo "y" | apt-get install docker-ce
                 
             - restore_cache:
                 keys:

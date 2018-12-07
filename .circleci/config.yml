@@ -81,10 +81,10 @@ jobs:
             #      id –nG
             - run:
                 name: start docker
-                command: systemctl --user status
+                command: sudo apt-get update sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
                   
-            - run:
-                command: docker run hello-world
+            # - run:
+            #    command: docker run hello-world
 
             - restore_cache:
                 keys:

@@ -88,7 +88,8 @@ jobs:
             - run:
                 command: |
                   groupadd docker
-                  usermod -aG docker $USER
+                  echo $USER
+                  usermod -aG docker root
                   systemctl restart docker
             
             - run:

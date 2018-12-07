@@ -92,7 +92,7 @@ jobs:
                 command: apt-key fingerprint 0EBFCD88
                 
             - run:
-                command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+                command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu trusty stable"
                 
             - run:
                 halt_build_on_fail: false

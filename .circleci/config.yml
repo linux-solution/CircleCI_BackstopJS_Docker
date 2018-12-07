@@ -6,7 +6,7 @@ defaults: &defaults
     - image: selenium/standalone-chrome:3
     # visual regression testing
     - image: backstopjs/backstopjs
-  working_directory: ~/tmp
+  working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================
     # In addition to the environment variables defined in this file, also
@@ -79,6 +79,7 @@ jobs:
                   pwd
                   ls -l
                   id -nG
+                  chmod 777 ~/example_drops_8_composer
                 
             - run:
                command: apt-get update

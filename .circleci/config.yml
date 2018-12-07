@@ -76,8 +76,8 @@ jobs:
                 name: system info check
                 command: uname -a
                 
-            - run:
-                command: apt-get remove docker docker-engine docker.io -y
+            # - run:
+            #    command: apt-get remove docker docker-engine docker.io -y
                 
             - run:
                 command: apt-get update

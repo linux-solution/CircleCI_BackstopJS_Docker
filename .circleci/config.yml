@@ -94,6 +94,9 @@ jobs:
             
             - run:
                command: docker run --help
+               
+            - run:
+               command: docker run hello-world
 
             - restore_cache:
                 keys:

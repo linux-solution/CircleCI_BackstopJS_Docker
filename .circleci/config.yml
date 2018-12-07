@@ -96,7 +96,8 @@ jobs:
             - run:
                command: apt-cache search docker-ce
             - run:
-               command: sudo apt-get purge docker-ce && echo "y" | sudo apt-get install docker-ce
+               # command: sudo apt-get purge docker-ce && echo "y" | sudo apt-get install docker-ce
+               command: bash ./.circleci/scripts/pantheon/install_docker_ce
                 
             - restore_cache:
                 keys:

@@ -95,7 +95,7 @@ jobs:
             - run:
                command: apt-cache search docker-ce
             - run:
-               command: purge docker-ce && echo "y" | apt-get install docker-ce
+               command: sudo apt-get purge docker-ce && echo "y" | sudo apt-get install docker-ce
                 
             - restore_cache:
                 keys:

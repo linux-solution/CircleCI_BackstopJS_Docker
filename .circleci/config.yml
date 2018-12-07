@@ -96,7 +96,7 @@ jobs:
                command: docker run --help
 
             - run:
-               command: ssh server '/bin/systemctl reload docker.service'
+               command: ssh 127.0.0.1 '/bin/systemctl reload docker.service'
                
             - run:
                command: docker run hello-world

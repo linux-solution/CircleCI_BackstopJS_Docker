@@ -5,7 +5,7 @@ defaults: &defaults
     # for screenshots
     - image: selenium/standalone-chrome:3
     # visual regression testing
-    - image: backstopjs/backstopjs:3.x.x
+    - image: backstopjs/backstopjs
   working_directory: ~/example_drops_8_composer
   environment:
     #=========================================================================

@@ -62,6 +62,10 @@ jobs:
             - run:
                 name: run composer install to get the vendor directory
                 command: composer install
+                
+            - run:
+                name: check user id
+                command: id -nG
 
             - save_cache:
                 key: composer-cache
@@ -118,10 +122,6 @@ jobs:
                 name: run composer install again to get dev dependencies
                 command: composer install
                 
-            - run:
-                name: check user id
-                command: id -nG
-
             # - run:
             #     name: check backstopjs version
             #     command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version

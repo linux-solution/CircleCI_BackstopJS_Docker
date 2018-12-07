@@ -59,14 +59,6 @@ jobs:
                   curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
                   tar -xz -C /tmp -f /tmp/docker-$VER.tgz
                   mv /tmp/docker/* /usr/bin
-                  
-            # - run: |
-            #     TAG=0.1.$CIRCLE_BUILD_NUM
-            #     docker login -u $DOCKER_USER -p $DOCKER_PASS
-                  
-            # - run:
-            #     name: docker status check
-            #     command: sudo systemctl status docker
                 
             - run:
                 name: check docker info
@@ -80,7 +72,17 @@ jobs:
                   ls -l
                   id -nG
                   chmod 777 ~/example_drops_8_composer
-                          
+                  
+            - run:
+                name: user mode set to docker
+                command: |
+                  usermod -aG docker root
+                  su – root
+                  id –nG
+                  
+            - run:
+                command: docker run hello-world
+
             - restore_cache:
                 keys:
                     - composer-cache
@@ -205,4 +207,4 @@ workflows:
       # Install dev dependencies and do simple tests (sniff, unit tests, etc.)
       - build
       # Build deploy and test on target platform
-      - build_deploy_and_test
+      # - build_deploy_and_test

@@ -72,7 +72,7 @@ jobs:
             #     name: check docker info
             #     command: docker info
             
-            -run:
+            - run:
                 name: install docker
                 command: |
                     dpkg -l | grep -i docker

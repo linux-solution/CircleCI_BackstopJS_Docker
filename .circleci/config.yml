@@ -123,8 +123,8 @@ jobs:
         steps:
             - checkout
             
-            - setup_remote_docker:
-                docker_layer_caching: true
+            # - setup_remote_docker:
+            #     docker_layer_caching: true
 
             - restore_cache:
                 keys:
@@ -153,10 +153,6 @@ jobs:
             - run:
                 name: run composer install again to get dev dependencies
                 command: composer install
-    
-            - run:
-                name: check backstopjs version
-                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version
                 
             - run:
                 name: Install Docker client
@@ -170,7 +166,11 @@ jobs:
             - run:
                 name: check docker info
                 command: docker --version
-
+                
+            - run:
+                name: check backstopjs version
+                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version
+                
             - run:
                 name: generate backstop test reference files
                 command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference --config=backstop-circleci.json --docker

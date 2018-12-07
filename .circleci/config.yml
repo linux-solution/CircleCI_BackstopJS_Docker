@@ -91,7 +91,7 @@ jobs:
             
             - run:
                 command: |
-                  groupadd docker
+               # groupadd docker
                   echo $USER
                   usermod -aG docker root
               # systemctl restart docker

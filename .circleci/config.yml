@@ -154,17 +154,26 @@ jobs:
             - run:
                 name: check backstopjs version
                 command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version
+                
+            - run:
+                name: Install Docker client
+                command: |
+                  set -x
+                  VER="17.03.0-ce"
+                  curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+                  tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+                  mv /tmp/docker/* /usr/bin
 
-            # - run:
-            #     name: generate backstop test reference files
-            #     command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference --config=backstop-circleci.json --docker
+            - run:
+                name: generate backstop test reference files
+                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference --config=backstop-circleci.json --docker
 
-            # - run:
-            #     name: run backstopjs test
-            #     command: docker run --rm -v $(pwd):/src backstopjs/backstopjs test --config=backstop-circleci.json --docker
+            - run:
+                name: run backstopjs test
+                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs test --config=backstop-circleci.json --docker
 
-            # - store_artifacts:
-            #     path: /app/tests/recyclables/backstop_data/ci_report
+            - store_artifacts:
+                path: /app/tests/recyclables/backstop_data/ci_report
 
             - run:
                 name: run functional tests with Behat
@@ -189,4 +198,4 @@ workflows:
       # Install dev dependencies and do simple tests (sniff, unit tests, etc.)
       - build
       # Build deploy and test on target platform
-      # - build_deploy_and_test
+      - build_deploy_and_test

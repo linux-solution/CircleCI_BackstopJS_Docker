@@ -86,7 +86,7 @@ jobs:
             #      sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
                   
             - run:
-               command: docker run hello-world
+               command: docker run --help
 
             - restore_cache:
                 keys:

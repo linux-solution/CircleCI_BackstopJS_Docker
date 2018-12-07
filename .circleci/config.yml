@@ -62,7 +62,7 @@ jobs:
                   
             - run:
                 name: docker status check
-                command: systemctl status docker
+                command: sudo systemctl status docker
                 
             - run:
                 name: check docker info

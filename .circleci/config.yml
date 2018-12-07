@@ -75,33 +75,30 @@ jobs:
             - run:
                 name: system info check
                 command: uname -a
-            
-            #- run:
-            #    command: dpkg -l | grep -i docker
                 
             - run:
-                command: apt update -y
+                command: apt-get remove docker docker-engine docker.io -y
                 
             - run:
-                command: apt install apt-transport-https ca-certificates curl software-properties-common -y
-                
-            # - run:
-            #     command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add
+                command: apt-get update
                 
             - run:
-                command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
+                command: apt-get install apt-transport-https ca-certificates curl software-properties-common -y
                 
             - run:
-                command: apt update -y
+                command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
                 
             - run:
-                command: apt-cache policy docker-ce
+                command: apt-key fingerprint 0EBFCD88
                 
             - run:
-                command: apt install docker-ce -y
+                command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
                 
             - run:
-                command: systemctl status docker
+                command: apt-get update
+                
+            - run:
+                command: apt-get install docker-ce -y
                 
             - restore_cache:
                 keys:

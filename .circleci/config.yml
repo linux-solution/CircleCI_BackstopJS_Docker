@@ -90,9 +90,7 @@ jobs:
                 command: curl -fsSL https://get.docker.com/ | sh
             
             - run:
-                command: |
-                  usermod -aG docker root
-                  systemctl restart docker
+                command: usermod -aG docker root
             
             - run:
                command: docker run --help

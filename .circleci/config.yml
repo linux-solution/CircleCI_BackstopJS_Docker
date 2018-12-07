@@ -154,6 +154,10 @@ jobs:
                 command: docker run --rm -v $(pwd):/src backstopjs/backstopjs --version
                 
             - run:
+                name: initialized backstop
+                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs init
+                
+            - run:
                 name: generate backstop test reference files
                 command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference --config=backstop-circleci.json --docker
 

@@ -95,7 +95,8 @@ jobs:
                 command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
                 
             - run:
-                command: apt-get update
+                halt_build_on_fail: false
+                command: apt-get update --retry=3
                 
             - run:
                 command: apt-get install docker-ce -y

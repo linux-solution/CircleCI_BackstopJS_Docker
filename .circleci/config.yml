@@ -76,18 +76,33 @@ jobs:
                 name: system info check
                 command: uname -a
             
-            - run: |
-                dpkg -l | grep -i docker
-                apt update
-                apt install apt-transport-https ca-certificates curl software-properties-common
-                curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
-                add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
-                apt update
-                apt-cache policy docker-ce
-                apt install docker-ce
-                systemctl status docker
-
-
+            - run:
+                command: dpkg -l | grep -i docker
+                
+            - run:
+                command: apt update
+                
+            - run:
+                command: apt install apt-transport-https ca-certificates curl software-properties-common
+                
+            - run:
+                command: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+                
+            - run:
+                command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+                
+            - run:
+                command: apt update
+                
+            - run:
+                command: apt-cache policy docker-ce
+                
+            - run:
+                command: apt install docker-ce
+                
+            - run:
+                command: systemctl status docker
+                
             - restore_cache:
                 keys:
                     - composer-cache

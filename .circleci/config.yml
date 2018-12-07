@@ -96,7 +96,7 @@ jobs:
                command: docker run --help
                
             - run:
-               command: apt-get install dbus-x11
+               command: apt-get install dbus-x11 -y
 
             - run:
                command: /bin/systemctl reload docker.service

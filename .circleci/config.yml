@@ -65,9 +65,9 @@ jobs:
             # build and push Docker image
             - run: |
                 TAG=0.1.$CIRCLE_BUILD_NUM
-                docker run hello-world
+                docker run --rm -v $(pwd):/src backstopjs/backstopjs --version
                 docker login -u $DOCKER_USER -p $DOCKER_PASS         # (5)
-                docker push hello-world
+                docker push backstopjs/backstopjs
             
             - restore_cache:
                 keys:

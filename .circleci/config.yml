@@ -159,11 +159,11 @@ jobs:
                 
             - run:
                 name: generate backstop test reference files
-                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference --config=backstop.json --docker
+                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs reference
 
             - run:
                 name: run backstopjs test
-                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs test --config=backstop.json --docker
+                command: docker run --rm -v $(pwd):/src backstopjs/backstopjs test
 
             - store_artifacts:
                 path: /app/tests/recyclables/backstop_data/ci_report

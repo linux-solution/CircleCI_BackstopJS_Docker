@@ -96,7 +96,7 @@ jobs:
                 
             - run:
                 halt_build_on_fail: false
-                command: apt-get update --retry=3
+                command: apt-get update
                 
             - run:
                 command: apt-get install docker-ce -y

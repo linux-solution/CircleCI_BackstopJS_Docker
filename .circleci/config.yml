@@ -73,12 +73,15 @@ jobs:
                   id -nG
                   chmod 777 ~/example_drops_8_composer
                   
+            #- run:
+            #    name: user mode set to docker
+            #    command: |
+             #     usermod -aG docker root
+            #      su – root
+            #      id –nG
             - run:
-                name: user mode set to docker
-                command: |
-                  usermod -aG docker root
-                  su – root
-                  id –nG
+                name: start docker
+                command: systemctl restart docker
                   
             - run:
                 command: docker run hello-world

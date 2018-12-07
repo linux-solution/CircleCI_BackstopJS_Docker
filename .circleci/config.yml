@@ -81,7 +81,6 @@ jobs:
                 
             - run:
                command: |
-                  apt-get remove docker docker-engine
                   apt-get update
                   apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
                   apt-get install apt-transport-https ca-certificates curl software-properties-common -y

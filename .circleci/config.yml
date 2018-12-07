@@ -94,9 +94,8 @@ jobs:
             
             - run:
                command: docker run --help
-               
-           - run:
-               name: docker restart
+
+            - run:
                command: /bin/systemctl reload docker.service
                
             - run:

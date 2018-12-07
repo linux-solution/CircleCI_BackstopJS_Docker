@@ -51,27 +51,27 @@ jobs:
             # - setup_remote_docker:
             #     docker_layer_caching: true
                 
-            - run:
-                name: Install Docker client
-                command: |
-                  set -x
-                  VER="17.03.0-ce"
-                  curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-                  tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-                  mv /tmp/docker/* /usr/bin
+            #- run:
+            #    name: Install Docker client
+            #    command: |
+            #      set -x
+             #     VER="17.03.0-ce"
+            #      curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            #      tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            #      mv /tmp/docker/* /usr/bin
                 
-            - run:
-                name: check docker info
-                command: docker --version
+            #- run:
+            #    name: check docker info
+            #    command: docker --version
             
-            - run:
-                name: system info check
-                command: |
-                  uname -a
-                  pwd
-                  ls -l
-                  id -nG
-                  chmod 777 ~/example_drops_8_composer
+            #- run:
+            #    name: system info check
+            #    command: |
+            #      uname -a
+            #      pwd
+            ##      ls -l
+             #     id -nG
+             #     chmod 777 ~/example_drops_8_composer
                   
             #- run:
             #    name: user mode set to docker
@@ -86,11 +86,15 @@ jobs:
             #      sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
             
             - run:
+                name: install docker using sh
+                command: curl -fsSL https://get.docker.com/ | sh
+            
+            - run:
                 command: |
                   groupadd docker
                   echo $USER
                   usermod -aG docker root
-                  systemctl restart docker
+              # systemctl restart docker
             
             - run:
                command: docker run --help

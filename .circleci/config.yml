@@ -77,7 +77,7 @@ jobs:
                 command: |
                   uname -a
                   pwd
-                  ll
+                  ls -l
                   id -nG
                 
             - run:
